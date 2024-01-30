@@ -1,0 +1,36 @@
+<div id="profiles">
+    <a href="/auth/spotify/login">
+        <div class="profiles">
+            <% if(profile){ %>
+            <h2><%=profile.display_name %></h2>
+            <a href="/spotify-logout">Logout</p>
+            <% }else{ %>
+            <h2>Login</h2>
+            <% } %>
+        </div>
+    </a>
+    <form action="/spotify-tracks" method="post" id="tracks">
+        <select id="playlistsList" name="trackValue">
+            <option selected="true">Select playlist</option>
+            <% if(playlists){ %> <% playlists.forEach(list => { %>
+            <option value="<%=JSON.stringify(list)  %>"><%= list.name %> (<%= list.tracks.total %>)</option>
+            <% })} %>
+        </select>
+        <button type="submit">submit</button>
+    </form>
+
+    <a href="/auth/youtube/login">
+        <div class="profiles">
+            <% if(ytProfile){ %>
+            <h2><%=ytProfile.title %></h2>
+            <a href="/youtube-logout">Logout</p>
+            <% }else{ %>
+            <h2>Login</h2>
+            <% } %>
+        </div>
+    </a>
+
+    <form action="/youtube-video" method="get">
+        <button type="submit">press</button>
+    </form>
+</div>
